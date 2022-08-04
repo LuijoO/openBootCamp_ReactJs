@@ -13,6 +13,7 @@ function TodoProvider(props) {
 
   const  [searchValue, setSearchValue] = React.useState('');
   //definimos los todos que estan completos completedtodos esta en el componente counter como un prop
+  const [openModal, setOpenModal] = React.useState(true);
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   //aca tambien le pasamos la cantidad de tdoos que existen, completos y cuales no.
   const totalTodos = todos.length;
@@ -27,6 +28,18 @@ function TodoProvider(props) {
       const searchText = searchValue.toLowerCase();
       return todoText.includes(searchText);
     })
+  }
+
+    // -------------------------------
+  // Add todo
+
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      completed: false,
+      text
+    });
+    saveTodos(newTodos);
   }
 
   // -------------------------------
@@ -65,6 +78,9 @@ function TodoProvider(props) {
           searchedTodos,
           completeTodo,
           deleteTodo,
+          openModal,
+          setOpenModal,
+          addTodo,
     }}>
       {props.children}
     </TodoContext.Provider>
