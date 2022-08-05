@@ -13,7 +13,7 @@ function TodoProvider(props) {
 
   const  [searchValue, setSearchValue] = React.useState('');
   //definimos los todos que estan completos completedtodos esta en el componente counter como un prop
-  const [openModal, setOpenModal] = React.useState(true);
+  const [openModal, setOpenModal] = React.useState(false);
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   //aca tambien le pasamos la cantidad de tdoos que existen, completos y cuales no.
   const totalTodos = todos.length;
